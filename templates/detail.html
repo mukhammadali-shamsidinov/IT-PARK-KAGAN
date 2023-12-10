@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="untree_co-section untree_co-section-4 pb-0"  id="portfolio-section">
+    <div class="container">
+      <div class="portfolio-single-wrap unslate_co--section" id="portfolio-single-section">
+
+        <div class="portfolio-single-inner">
+          <h2 class="heading-portfolio-single-h2 text-black">{{ product.title }} Dars</h2>
+
+          <div class="row justify-content-between mb-5">
+            <div class="col-12 mb-4">
+              <div class="owl-carousel single-slider">
+                <figure class="mb-4">
+                  <img src="images/portfolio_1.jpg" alt="Image" class="img-fluid">
+                </figure>
+                <figure class="mb-4">
+                  <img src="images/portfolio_2.jpg" alt="Image" class="img-fluid">
+                </figure>
+              </div>
+            </div>
+            <div class="col-12 my-5">
+              <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                  <div class="detail-v1">
+                    <span class="detail-label">Project Date</span>
+                    <span class="detail-val">{{ product.created_at }}</span>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                  <div class="detail-v1">
+                    <span class="detail-label">Category</span>
+                    <span class="detail-val"><a href="#">{{ product.category }}</a></span>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                  <div class="detail-v1">
+                    <span class="detail-label">Client</span>
+                    <span class="detail-val">Untree.co</span>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                  <div class="detail-v1">
+                    <span class="detail-label">Visit</span>
+                    <span class="detail-val"><a href="https://untree.co">https://untree.co/</a></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                <img src="{{ product.image.url }}" class="img-thumbnail" alt="">
+            </div>
+            <div class="col-md-6">
+                <h4>dars haqida</h4>
+             <p>
+                 {{ product.description }}
+
+             </p>
+                <p>
+                    Dasrlar Soni:{{ product.video_set.count }}ta
+                </p>
+              </div>
+              
+              <div class="col-12">
+                  {% for course in product.video_set.all %}
+       <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="section1">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                        {{ course.video_url.title }}
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapse1" class="collapse show" aria-labelledby="section1" data-parent="#accordion">
+                <div class="card-body">
+                    <video width="100%" controls src="{{ course.video_url.url }}"></video>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Add more sections as needed -->
+
+    </div>
+                  {% endfor %}
+              </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}

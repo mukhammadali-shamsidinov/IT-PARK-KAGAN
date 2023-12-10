@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="untree_co-section pb-0" id="home-section">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-md-7">
+
+                     <div class="custom-block" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="section-title text-black">Login</h2>
+                <form class="contact-form" method="post">
+{% csrf_token %}
+                     <div class="form-group">
+                    {{ form }}
+                            </div>
+
+
+                  <button type="submit" class="btn btn-primary">Login</button>
+                    <br>
+                    <span>Agarda ro'yxatdan o'tmagan bo'lsangiz <a href="{% url 'users:register' %}">linkni</a> bosing</span>
+                </form>
+              </div> </div>
+      </div>
+
+    </div>
+  </div>
+{% endblock content %}

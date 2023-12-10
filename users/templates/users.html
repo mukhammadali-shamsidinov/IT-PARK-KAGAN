@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="untree_co-section pb-0" id="home-section">
+<div class="container">
+<h1>Userlar Ro'yxati</h1>
+     <div class="row">
+         <div class="col">
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">username</th>
+      <th scope="col">email</th>
+      <th scope="col">actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for user in users %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.first_name }}</td>
+      <td>{{ user.last_name }}</td>
+      <td>@{{ user.username }}</td>
+      <td>@{{ user.email }}</td>
+      <td>
+          <div class="btn-group">
+              <a href="{% url 'users:edit_user' user.username %}" class="btn btn-primary">edit</a>
+              <a href="{% url 'users:delete_user' user.username %}" class="btn btn-danger">remove</a>
+          </div>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+         </div>
+     </div>
+    </div>
+  </div>
+{% endblock content %}
